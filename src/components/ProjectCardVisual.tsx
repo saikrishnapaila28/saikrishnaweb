@@ -49,7 +49,7 @@ export default function ProjectCardVisual({ projectId }: ProjectCardVisualProps)
       <div className="flex items-center font-cozy text-xs text-golden-400">
         <span className="flex items-center gap-1.5 font-semibold">
           <Smartphone className="w-3.5 h-3.5 text-golden-400" />
-          <span>Mobile Application</span>
+          <span>Mobile</span>
         </span>
       </div>
 
