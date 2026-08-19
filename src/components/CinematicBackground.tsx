@@ -79,10 +79,11 @@ export default function CinematicBackground() {
   return (
     <div
       aria-hidden="true"
-      className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-botanica-950 select-none"
+      className="fixed -top-16 -bottom-16 -left-4 -right-4 pointer-events-none z-0 overflow-hidden bg-botanica-950 select-none"
       style={{
         transform: "translate3d(0, 0, 0)",
         WebkitTransform: "translate3d(0, 0, 0)",
+        contain: "paint layout",
       }}
     >
       {/* LAYER 1: Deep Botanical Base Gradient (Rich dark conservatory night with deep emerald undertones) */}
@@ -107,11 +108,11 @@ export default function CinematicBackground() {
         <div className="absolute top-[35%] right-[2%] w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] rounded-full bg-[radial-gradient(circle,rgba(247,195,140,0.10)_0%,rgba(244,162,97,0.03)_50%,transparent_75%)] blur-[80px]" />
       </div>
 
-      {/* LAYER 3: Distant Botanical Silhouettes (Parallax Layers 2 & 3) */}
+      {/* LAYER 3: Distant Botanical Silhouettes (Parallax Layers 2 & 3 - Preserved Aspect Ratio) */}
       <svg
         className="absolute -inset-4 w-[calc(100%+2rem)] h-[calc(100%+2rem)] pointer-events-none"
         xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="none"
+        preserveAspectRatio="xMidYMid slice"
         viewBox="0 0 1440 900"
       >
         <defs>

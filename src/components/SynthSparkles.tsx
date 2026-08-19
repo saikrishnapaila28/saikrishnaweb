@@ -288,7 +288,7 @@ export default function SynthSparkles() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-10 w-full h-full"
+      className="fixed -top-16 -bottom-16 left-0 right-0 pointer-events-none z-10 w-full h-[calc(100%+8rem)]"
     />
   );
 }
