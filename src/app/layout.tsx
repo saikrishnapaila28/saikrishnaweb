@@ -25,11 +25,14 @@ const siteUrl =
   process.env.URL ||
   "https://saikrishnapaila.netlify.app";
 
+const title = "Sai Krishna Paila — Data Science Student & Software Engineer";
+const description =
+  "Sai Krishna Paila is a B.Tech Data Science student and Software Engineer based in New Delhi, building web experiences and exploring technology through software development, music, art and other creative work.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Sai Krishna Paila — Data Science Student & Developer",
-  description:
-    "Sai Krishna Paila is a Computer Science student specializing in Data Science, with experience in web development, SEO and deployment, and interests in music, photography, writing and creative technology.",
+  title,
+  description,
   keywords: [
     "Sai Krishna Paila",
     "Sai Krishna Paila developer",
@@ -45,7 +48,7 @@ export const metadata: Metadata = {
   creator: "Sai Krishna Paila",
   publisher: "Sai Krishna Paila",
   alternates: {
-    canonical: "./",
+    canonical: "https://saikrishnapaila.netlify.app/",
   },
   icons: {
     icon: "/sk-logo.png",
@@ -53,10 +56,9 @@ export const metadata: Metadata = {
     apple: "/sk-logo.png",
   },
   openGraph: {
-    title: "Sai Krishna Paila — Data Science Student & Developer",
-    description:
-      "Sai Krishna Paila is a Computer Science student specializing in Data Science, with experience in web development, SEO and deployment, and interests in music, photography, writing and creative technology.",
-    url: siteUrl,
+    title,
+    description,
+    url: "https://saikrishnapaila.netlify.app/",
     siteName: "Sai Krishna Paila",
     locale: "en_IN",
     type: "website",
@@ -71,9 +73,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sai Krishna Paila — Data Science Student & Developer",
-    description:
-      "Sai Krishna Paila is a Computer Science student specializing in Data Science, with experience in web development, SEO and deployment, and interests in music, photography, writing and creative technology.",
+    title,
+    description,
     images: ["/hero-bg.jpg"],
   },
   robots: {
@@ -96,21 +97,24 @@ export default function RootLayout({
 }>) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Sai Krishna Paila",
-    url: siteUrl,
-    email: "saikrishnapaila28@gmail.com",
-    jobTitle: "Software Engineer",
-    description:
-      "Computer Science student specializing in Data Science with experience in web development, SEO and deployment.",
-    sameAs: [
-      "https://github.com/saikrishnapaila28",
-      "https://www.linkedin.com/in/saikrishnapaila",
-    ],
-    affiliation: {
-      "@type": "EducationalOrganization",
-      name: "IILM University",
-    },
+    "@graph": [
+      {
+        "@type": "Person",
+        "name": "Sai Krishna Paila",
+        "jobTitle": "Software Engineer",
+        "url": "https://saikrishnapaila.netlify.app/",
+        "email": "saikrishnapaila28@gmail.com",
+        "sameAs": [
+          "https://github.com/saikrishnapaila28",
+          "https://www.linkedin.com/in/saikrishnapaila"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "name": "Sai Krishna Paila",
+        "url": "https://saikrishnapaila.netlify.app/"
+      }
+    ]
   };
 
   return (
