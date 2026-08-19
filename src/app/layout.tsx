@@ -99,7 +99,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "ki79TMeLPrXLfXu4dbO5B8V8_OQ6JS4uQXE0RYVC1rE",
+    google: "_p2XQ-QnEbHnL-Yr8bJaP5UINxi3tHvdW8K68qITg-A",
   },
 };
 
@@ -138,7 +138,7 @@ export default function RootLayout({
       className={`scroll-smooth ${bricolageGrotesque.variable} ${instrumentSans.variable} ${jetbrainsMono.variable}`}
     >
       <head>
-        <meta name="google-site-verification" content="ki79TMeLPrXLfXu4dbO5B8V8_OQ6JS4uQXE0RYVC1rE" />
+        <meta name="google-site-verification" content="_p2XQ-QnEbHnL-Yr8bJaP5UINxi3tHvdW8K68qITg-A" />
         <link rel="image_src" href="https://saikrishnaweb.vercel.app/og-image.jpg" />
         <meta name="image" content="https://saikrishnaweb.vercel.app/og-image.jpg" />
         <meta itemProp="image" content="https://saikrishnaweb.vercel.app/og-image.jpg" />
