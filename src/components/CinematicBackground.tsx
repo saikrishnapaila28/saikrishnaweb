@@ -10,7 +10,7 @@ export default function CinematicBackground() {
           alt="Synth Botanical Greenhouse Golden Hour Installation"
           fill
           priority
-          unoptimized
+          sizes="100vw"
           className="object-cover object-[40%_50%] sm:object-center select-none"
         />
       </div>

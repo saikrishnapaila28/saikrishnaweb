@@ -16,6 +16,7 @@ const instrumentSans = Instrument_Sans({
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
+  weight: ["400"],
   variable: "--font-mono",
   display: "swap",
 });
