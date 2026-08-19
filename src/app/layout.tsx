@@ -98,6 +98,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: "ki79TMeLPrXLfXu4dbO5B8V8_OQ6JS4uQXE0RYVC1rE",
+  },
 };
 
 export default function RootLayout({
@@ -135,6 +138,7 @@ export default function RootLayout({
       className={`scroll-smooth ${bricolageGrotesque.variable} ${instrumentSans.variable} ${jetbrainsMono.variable}`}
     >
       <head>
+        <meta name="google-site-verification" content="ki79TMeLPrXLfXu4dbO5B8V8_OQ6JS4uQXE0RYVC1rE" />
         <link rel="image_src" href="https://saikrishnapaila.netlify.app/og-image.jpg" />
         <meta name="image" content="https://saikrishnapaila.netlify.app/og-image.jpg" />
         <meta itemProp="image" content="https://saikrishnapaila.netlify.app/og-image.jpg" />
