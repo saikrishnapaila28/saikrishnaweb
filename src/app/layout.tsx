@@ -28,7 +28,7 @@ const siteUrl =
 
 const title = "Sai Krishna Paila — Data Science Student & Software Engineer";
 const description =
-  "Sai Krishna Paila is a B.Tech Data Science student and Software Engineer based in New Delhi, building web experiences and exploring technology through software development, music, art and other creative work.";
+  "Sai Krishna Paila is a B.Tech Data Science student and Software Engineer building web experiences, AI systems, and exploring creative digital technology.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -65,10 +65,12 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/hero-bg.jpg",
+        url: "https://saikrishnapaila.netlify.app/og-image.jpg",
+        secureUrl: "https://saikrishnapaila.netlify.app/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Sai Krishna Paila Portfolio Visual Environment",
+        type: "image/jpeg",
+        alt: "Sai Krishna Paila — Data Science Student & Software Engineer",
       },
     ],
   },
@@ -76,7 +78,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: ["/hero-bg.jpg"],
+    images: [
+      {
+        url: "https://saikrishnapaila.netlify.app/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Sai Krishna Paila — Data Science Student & Software Engineer",
+      },
+    ],
   },
   robots: {
     index: true,
@@ -104,6 +113,7 @@ export default function RootLayout({
         "name": "Sai Krishna Paila",
         "jobTitle": "Software Engineer",
         "url": "https://saikrishnapaila.netlify.app/",
+        "image": "https://saikrishnapaila.netlify.app/og-image.jpg",
         "email": "saikrishnapaila28@gmail.com",
         "sameAs": [
           "https://github.com/saikrishnapaila28",
@@ -113,7 +123,8 @@ export default function RootLayout({
       {
         "@type": "WebSite",
         "name": "Sai Krishna Paila",
-        "url": "https://saikrishnapaila.netlify.app/"
+        "url": "https://saikrishnapaila.netlify.app/",
+        "image": "https://saikrishnapaila.netlify.app/og-image.jpg"
       }
     ]
   };
