@@ -1,36 +1,42 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Compass, FileText, Github, Linkedin, ArrowDown } from "lucide-react";
+import { useResume } from "./ResumeContext";
 
 interface HeroProps {
-  onOpenResume: () => void;
+  onOpenResume?: () => void;
 }
 
 export default function Hero({ onOpenResume }: HeroProps) {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isDesktop, setIsDesktop] = useState(false);
+  const { openResume: contextOpenResume } = useResume();
+  const handleOpenResume = onOpenResume || contextOpenResume;
+  const cardRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const checkDesktop = () => {
-      setIsDesktop(window.innerWidth >= 768);
-    };
-
-    checkDesktop();
+    let animationFrameId: number;
+    let ticking = false;
 
     const handleMouseMove = (e: MouseEvent) => {
-      if (window.innerWidth < 768) return;
-      const { innerWidth, innerHeight } = window;
-      const x = (e.clientX / innerWidth - 0.5) * 10;
-      const y = (e.clientY / innerHeight - 0.5) * 10;
-      setMousePos({ x, y });
+      if (window.innerWidth < 768 || !cardRef.current) return;
+      
+      if (!ticking) {
+        animationFrameId = window.requestAnimationFrame(() => {
+          if (!cardRef.current) return;
+          const { innerWidth, innerHeight } = window;
+          const x = (e.clientX / innerWidth - 0.5) * 10;
+          const y = (e.clientY / innerHeight - 0.5) * 10;
+          cardRef.current.style.transform = `perspective(1000px) rotateY(${x * 0.25}deg) rotateX(${-y * 0.25}deg)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener("resize", checkDesktop);
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     return () => {
-      window.removeEventListener("resize", checkDesktop);
       window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
@@ -40,14 +46,8 @@ export default function Hero({ onOpenResume }: HeroProps) {
         
         {/* Physical 3D Glass Plane Container */}
         <div
-          className="glass-3d-plane p-8 sm:p-12 max-w-3xl space-y-8 backdrop-blur-2xl"
-          style={
-            isDesktop
-              ? {
-                  transform: `perspective(1000px) rotateY(${mousePos.x * 0.25}deg) rotateX(${-mousePos.y * 0.25}deg)`,
-                }
-              : undefined
-          }
+          ref={cardRef}
+          className="glass-3d-plane p-8 sm:p-12 max-w-3xl space-y-8 backdrop-blur-2xl transition-transform duration-100 ease-out"
         >
           
           {/* Sub-identity Pill */}
@@ -89,7 +89,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
             </a>
 
             <button
-              onClick={onOpenResume}
+              onClick={handleOpenResume}
               className="inline-flex items-center gap-2.5 px-7 py-3.5 glass-pill-apple text-paper-50 text-xs tracking-wider font-semibold hover:bg-white/20 transition-all duration-300"
             >
               <FileText className="w-4 h-4 text-golden-400" />

@@ -1,12 +1,16 @@
 "use client";
 
 import { FileText, Download, Eye } from "lucide-react";
+import { useResume } from "./ResumeContext";
 
 interface ResumeSectionProps {
-  onOpenResume: () => void;
+  onOpenResume?: () => void;
 }
 
 export default function ResumeSection({ onOpenResume }: ResumeSectionProps) {
+  const { openResume: contextOpenResume } = useResume();
+  const handleOpenResume = onOpenResume || contextOpenResume;
+
   return (
     <section className="py-24 relative z-10 border-t border-white/10">
       <div className="max-w-5xl mx-auto px-6 md:px-12">
@@ -30,7 +34,7 @@ export default function ResumeSection({ onOpenResume }: ResumeSectionProps) {
 
           <div className="flex flex-wrap items-center gap-4 shrink-0 font-cozy">
             <button
-              onClick={onOpenResume}
+              onClick={handleOpenResume}
               className="inline-flex items-center gap-2 px-6 py-3.5 bg-golden-500 text-botanica-950 font-bold rounded-full text-xs uppercase tracking-wider hover:bg-golden-400 hover:scale-[1.02] transition-all"
             >
               <Eye className="w-4 h-4" />

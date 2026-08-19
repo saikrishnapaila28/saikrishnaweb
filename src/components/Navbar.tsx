@@ -3,12 +3,16 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Menu, X, FileText } from "lucide-react";
+import { useResume } from "./ResumeContext";
 
 interface NavbarProps {
-  onOpenResume: () => void;
+  onOpenResume?: () => void;
 }
 
 export default function Navbar({ onOpenResume }: NavbarProps) {
+  const { openResume: contextOpenResume } = useResume();
+  const handleOpenResume = onOpenResume || contextOpenResume;
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -19,27 +23,42 @@ export default function Navbar({ onOpenResume }: NavbarProps) {
   const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
-
-      const sections = ["about", "work", "experience", "skills", "creative"];
-      const scrollPosition = window.scrollY + 200;
-
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
-            break;
-          }
-        }
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 40);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Efficient IntersectionObserver for section tracking (no layout thrashing)
+    const sections = ["about", "work", "experience", "skills", "creative"];
+    const sectionElements = sections
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-30% 0px -50% 0px", threshold: 0 }
+    );
+
+    sectionElements.forEach((el) => observer.observe(el));
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   const handleMouseEnter = (index: number) => {
@@ -99,6 +118,7 @@ export default function Navbar({ onOpenResume }: NavbarProps) {
               src="/sk-logo.png"
               alt="Sai Krishna Paila SK Logo"
               fill
+              sizes="(max-width: 640px) 64px, 80px"
               className="object-contain object-left drop-shadow-[0_0_12px_rgba(244,162,97,0.3)]"
               priority
             />
@@ -158,7 +178,7 @@ export default function Navbar({ onOpenResume }: NavbarProps) {
         {/* 3. RESUME Button Physically INSIDE Right of Outer Navbar */}
         <div className="hidden md:flex items-center">
           <button
-            onClick={onOpenResume}
+            onClick={handleOpenResume}
             className="glass-pill-apple px-5 py-2 text-xs font-cozy font-semibold flex items-center gap-2 border border-golden-500/30 text-golden-300 hover:bg-white/15 hover:border-golden-400 transition-all shadow-sm shrink-0"
           >
             <FileText className="w-3.5 h-3.5 text-golden-400" />
@@ -197,7 +217,7 @@ export default function Navbar({ onOpenResume }: NavbarProps) {
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                onOpenResume();
+                handleOpenResume();
               }}
               className="flex items-center justify-center gap-2 w-full py-3 bg-golden-500 text-botanica-950 rounded-xl text-xs tracking-widest font-cozy font-bold hover:bg-golden-400 transition-all mt-2"
             >
