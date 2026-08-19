@@ -5,14 +5,14 @@ export default function CinematicBackground() {
   return (
     <div
       aria-hidden="true"
-      className="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden bg-botanica-950 select-none"
+      className="fixed -top-[8vh] -bottom-[8vh] -left-[4vw] -right-[4vw] w-[calc(100%+8vw)] h-[calc(100lvh+16vh)] min-h-[116vh] pointer-events-none z-0 overflow-hidden bg-botanica-950 select-none"
       style={{
         transform: "translate3d(0, 0, 0)",
         WebkitTransform: "translate3d(0, 0, 0)",
         contain: "strict",
       }}
     >
-      {/* 1. Cinematic Greenhouse Background Image (Natural photographic appearance, preserved 16:9 aspect ratio) */}
+      {/* 1. Cinematic Greenhouse Background Image (Fixed to 100lvh large viewport, immune to address-bar scroll reframing) */}
       <Image
         src="/hero-bg.jpg"
         alt="Cinematic greenhouse atrium background"
@@ -23,7 +23,8 @@ export default function CinematicBackground() {
         quality={100}
         className="object-cover object-center md:object-[50%_35%] select-none pointer-events-none"
         style={{
-          filter: "contrast(1.02) saturate(1.03)",
+          transform: "translate3d(0, 0, 0)",
+          WebkitTransform: "translate3d(0, 0, 0)",
         }}
       />
 
