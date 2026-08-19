@@ -135,6 +135,9 @@ export default function RootLayout({
       className={`scroll-smooth ${bricolageGrotesque.variable} ${instrumentSans.variable} ${jetbrainsMono.variable}`}
     >
       <head>
+        <link rel="image_src" href="https://saikrishnapaila.netlify.app/og-image.jpg" />
+        <meta name="image" content="https://saikrishnapaila.netlify.app/og-image.jpg" />
+        <meta itemProp="image" content="https://saikrishnapaila.netlify.app/og-image.jpg" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
