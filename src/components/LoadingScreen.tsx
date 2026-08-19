@@ -8,36 +8,22 @@ export default function LoadingScreen() {
   const [isMounted, setIsMounted] = useState(true);
 
   useEffect(() => {
-    // If document is already complete, fade out quickly
-    const handleLoad = () => {
-      // Small tick for smooth entrance and exit
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 100);
+    // 1. Begin smooth opacity fade-out after 200ms
+    const fadeTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 200);
+
+    // 2. Completely remove loading screen from DOM after 750ms
+    const unmountTimer = setTimeout(() => {
+      setIsMounted(false);
+    }, 750);
+
+    // 3. Clean up both timers on unmount
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(unmountTimer);
     };
-
-    if (document.readyState === "complete") {
-      handleLoad();
-    } else {
-      window.addEventListener("load", handleLoad);
-      // Fallback timeout so loader never hangs
-      const fallbackTimer = setTimeout(handleLoad, 1200);
-      return () => {
-        window.removeEventListener("load", handleLoad);
-        clearTimeout(fallbackTimer);
-      };
-    }
   }, []);
-
-  // Unmount completely from DOM after opacity fade transition (500ms)
-  useEffect(() => {
-    if (!isLoading) {
-      const timer = setTimeout(() => {
-        setIsMounted(false);
-      }, 550);
-      return () => clearTimeout(timer);
-    }
-  }, [isLoading]);
 
   if (!isMounted) return null;
 

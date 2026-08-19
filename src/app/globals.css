@@ -51,14 +51,15 @@ body {
   font-family: var(--font-mono), monospace;
 }
 
-/* Subtle Film Grain Overlay (Contained in Background Layer) */
+/* Subtle Cinematic 35mm Film Grain (Camouflages compression & softens transitions) */
 .film-grain {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 1;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  z-index: 2;
+  opacity: 0.038;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.90' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 /* Outer Unified Glass Navbar Container */
@@ -88,43 +89,44 @@ body {
   transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* 3D Physical Glass Plane */
+/* 3D Physical Glass Plane (Warm Smoked Architectural Espresso Glass) */
 .glass-3d-plane {
-  background: rgba(10, 18, 12, 0.35);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-top-color: rgba(255, 255, 255, 0.3);
-  border-left-color: rgba(255, 255, 255, 0.22);
+  background: rgba(18, 16, 13, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(244, 162, 97, 0.22);
+  border-top-color: rgba(244, 162, 97, 0.28);
+  border-left-color: rgba(244, 162, 97, 0.25);
   border-radius: 1.5rem;
-  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.45), inset 0 1px 0 0 rgba(244, 162, 97, 0.15);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform: translateZ(0);
 }
 
 .glass-3d-plane:hover {
-  background: rgba(14, 24, 16, 0.48);
-  border-color: rgba(244, 162, 97, 0.4);
-  border-top-color: rgba(255, 255, 255, 0.45);
-  box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.55), 0 0 25px 2px rgba(244, 162, 97, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  background: rgba(22, 19, 15, 0.65);
+  border-color: rgba(244, 162, 97, 0.35);
+  border-top-color: rgba(244, 162, 97, 0.45);
+  box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.55), 0 0 16px 1px rgba(244, 162, 97, 0.08), inset 0 1px 0 0 rgba(244, 162, 97, 0.22);
 }
 
 /* Apple-Style Glass Pill */
 .glass-pill-apple {
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(22, 19, 15, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(244, 162, 97, 0.22);
+  border-top-color: rgba(244, 162, 97, 0.30);
   border-radius: 9999px;
   color: #F7F4EE;
   transition: all 0.25s ease;
 }
 
 .glass-pill-apple:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(244, 162, 97, 0.45);
+  background: rgba(26, 22, 17, 0.60);
+  border-color: rgba(244, 162, 97, 0.40);
   color: #F4A261;
 }
 

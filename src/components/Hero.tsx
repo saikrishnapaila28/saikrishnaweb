@@ -47,7 +47,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
         {/* Physical 3D Glass Plane Container */}
         <div
           ref={cardRef}
-          className="glass-3d-plane p-8 sm:p-12 max-w-3xl space-y-8 backdrop-blur-2xl transition-transform duration-100 ease-out"
+          className="glass-3d-plane p-8 sm:p-12 max-w-3xl space-y-8 transition-transform duration-100 ease-out"
         >
           
           {/* Sub-identity Pill */}
