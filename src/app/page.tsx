@@ -10,12 +10,16 @@ import Creative from "@/components/Creative";
 import ResumeSection from "@/components/ResumeSection";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import LoadingScreen from "@/components/LoadingScreen";
 import { ResumeProvider } from "@/components/ResumeContext";
 
 export default function Home() {
   return (
     <ResumeProvider>
       <main className="min-h-screen relative overflow-hidden text-paper-50 bg-botanica-950">
+        {/* Premium Cinematic Splash / Loading Screen */}
+        <LoadingScreen />
+
         {/* Synth Botanical Atrium Background Photograph */}
         <CinematicBackground />
 

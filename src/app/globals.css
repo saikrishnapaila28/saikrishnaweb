@@ -152,6 +152,29 @@ body {
   color: #F7F4EE;
 }
 
+/* Premium SK Loader Bloom Animation */
+@keyframes skBloom {
+  0% {
+    transform: scale(0.94);
+    opacity: 0.8;
+    box-shadow: 0 0 20px rgba(244, 162, 97, 0.2);
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 1;
+    box-shadow: 0 0 45px rgba(244, 162, 97, 0.45);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 30px rgba(244, 162, 97, 0.3);
+  }
+}
+
+.animate-sk-bloom {
+  animation: skBloom 1.8s ease-in-out infinite alternate;
+}
+
 /* Reduced Motion Respect */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
@@ -159,5 +182,8 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .animate-sk-bloom {
+    animation: none !important;
   }
 }
