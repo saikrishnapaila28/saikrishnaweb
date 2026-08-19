@@ -91,6 +91,7 @@ export default function Navbar({ onOpenResume }: NavbarProps) {
         <button
           onClick={scrollToTop}
           title="Back to top"
+          aria-label="Back to top"
           className="flex items-center justify-center p-1 focus:outline-none transition-opacity hover:opacity-90 shrink-0"
         >
           <div className="relative h-9 w-16 sm:w-20">

@@ -18,7 +18,7 @@ export default function Footer() {
         {/* Center Links */}
         <div className="flex items-center gap-6 text-xs font-mono text-paper-300">
           <a
-            href="https://github.com/saikrishnapaila"
+            href="https://github.com/saikrishnapaila28"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-golden-400 transition-colors"

@@ -2,16 +2,16 @@ import Image from "next/image";
 
 export default function CinematicBackground() {
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-botanica-950">
       {/* Synth Botanical Greenhouse Photography Background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 w-full h-full">
         <Image
           src="/hero-bg.jpg"
           alt="Synth Botanical Greenhouse Golden Hour Installation"
           fill
           priority
-          sizes="100vw"
-          className="object-cover object-center transform scale-105 transition-transform duration-1000"
+          unoptimized
+          className="object-cover object-[40%_50%] sm:object-center select-none"
         />
       </div>
 
@@ -24,3 +24,4 @@ export default function CinematicBackground() {
     </div>
   );
 }
+

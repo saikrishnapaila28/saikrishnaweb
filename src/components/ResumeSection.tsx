@@ -37,13 +37,14 @@ export default function ResumeSection({ onOpenResume }: ResumeSectionProps) {
               <span>VIEW RESUME</span>
             </button>
 
-            <button
-              onClick={onOpenResume}
+            <a
+              href="/resume.pdf"
+              download="Sai_Krishna_Paila_Resume.pdf"
               className="inline-flex items-center gap-2 px-6 py-3.5 glass-pill-apple text-paper-50 font-semibold rounded-full text-xs uppercase tracking-wider hover:bg-white/15 transition-all"
             >
               <Download className="w-4 h-4 text-golden-400" />
               <span>DOWNLOAD PDF</span>
-            </button>
+            </a>
           </div>
 
         </div>
