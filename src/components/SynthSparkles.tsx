@@ -40,10 +40,25 @@ export default function SynthSparkles() {
     let isVisible = true;
     let isRunning = false;
 
+    let lastWidth = window.innerWidth;
+    let lastHeight = window.innerHeight;
+
     const handleResize = () => {
       if (!canvas) return;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      const currentWidth = window.innerWidth;
+      const currentHeight = window.innerHeight;
+
+      // On mobile, scrolling collapses/expands the address bar (height delta < 120px with identical width).
+      // Ignore address-bar resize jitters; only resize on width changes or major orientation changes.
+      const isMobileScrollResize =
+        currentWidth === lastWidth && Math.abs(currentHeight - lastHeight) < 120;
+
+      if (!isMobileScrollResize) {
+        lastWidth = currentWidth;
+        lastHeight = currentHeight;
+        width = canvas.width = currentWidth;
+        height = canvas.height = currentHeight;
+      }
     };
 
     const handleVisibilityChange = () => {
