@@ -24,14 +24,14 @@ const jetbrainsMono = JetBrains_Mono({
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
   process.env.URL ||
-  "https://saikrishnapaila.netlify.app";
+  "https://saikrishnaweb.vercel.app";
 
 const title = "Sai Krishna Paila — Data Science Student & Software Engineer";
 const description =
   "Sai Krishna Paila is a B.Tech Data Science student and Software Engineer building web experiences, AI systems, and exploring creative digital technology.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL("https://saikrishnaweb.vercel.app"),
   title,
   description,
   keywords: [
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   creator: "Sai Krishna Paila",
   publisher: "Sai Krishna Paila",
   alternates: {
-    canonical: "https://saikrishnapaila.netlify.app/",
+    canonical: "https://saikrishnaweb.vercel.app/",
   },
   icons: {
     icon: "/sk-logo.png",
@@ -59,14 +59,14 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
-    url: "https://saikrishnapaila.netlify.app/",
+    url: "https://saikrishnaweb.vercel.app/",
     siteName: "Sai Krishna Paila",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "https://saikrishnapaila.netlify.app/og-image.jpg",
-        secureUrl: "https://saikrishnapaila.netlify.app/og-image.jpg",
+        url: "https://saikrishnaweb.vercel.app/og-image.jpg",
+        secureUrl: "https://saikrishnaweb.vercel.app/og-image.jpg",
         width: 1200,
         height: 630,
         type: "image/jpeg",
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     description,
     images: [
       {
-        url: "https://saikrishnapaila.netlify.app/og-image.jpg",
+        url: "https://saikrishnaweb.vercel.app/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Sai Krishna Paila — Data Science Student & Software Engineer",
@@ -115,8 +115,8 @@ export default function RootLayout({
         "@type": "Person",
         "name": "Sai Krishna Paila",
         "jobTitle": "Software Engineer",
-        "url": "https://saikrishnapaila.netlify.app/",
-        "image": "https://saikrishnapaila.netlify.app/og-image.jpg",
+        "url": "https://saikrishnaweb.vercel.app/",
+        "image": "https://saikrishnaweb.vercel.app/og-image.jpg",
         "email": "saikrishnapaila28@gmail.com",
         "sameAs": [
           "https://github.com/saikrishnapaila28",
@@ -126,8 +126,8 @@ export default function RootLayout({
       {
         "@type": "WebSite",
         "name": "Sai Krishna Paila",
-        "url": "https://saikrishnapaila.netlify.app/",
-        "image": "https://saikrishnapaila.netlify.app/og-image.jpg"
+        "url": "https://saikrishnaweb.vercel.app/",
+        "image": "https://saikrishnaweb.vercel.app/og-image.jpg"
       }
     ]
   };
@@ -139,9 +139,9 @@ export default function RootLayout({
     >
       <head>
         <meta name="google-site-verification" content="ki79TMeLPrXLfXu4dbO5B8V8_OQ6JS4uQXE0RYVC1rE" />
-        <link rel="image_src" href="https://saikrishnapaila.netlify.app/og-image.jpg" />
-        <meta name="image" content="https://saikrishnapaila.netlify.app/og-image.jpg" />
-        <meta itemProp="image" content="https://saikrishnapaila.netlify.app/og-image.jpg" />
+        <link rel="image_src" href="https://saikrishnaweb.vercel.app/og-image.jpg" />
+        <meta name="image" content="https://saikrishnaweb.vercel.app/og-image.jpg" />
+        <meta itemProp="image" content="https://saikrishnaweb.vercel.app/og-image.jpg" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
